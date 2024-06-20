@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:51:46 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/18 14:05:26 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/20 21:00:13 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,34 @@
 #include "libft/libft.h"
 #include "mlx_linux/mlx.h"
 
-int	check_range(t_point num)
+/* int	formula_mandelbrot(int x, int y, t_mlx *info)
 {
-	if ((num.real > 2 || num.real < -2) || (num.im > 2 || num.im < -2))
-		return (1);
-	// FORMULA = raiz cuadrada de (c.real^2 + c.im^2)
-	if (sqrt(pow(num.real, 2) + pow(num.im, 2)) > 2)
-		return (1);
-	return (0);
-}
+	int	count;
+	t_point	z;
+	t_point	c;
+	double	tmp_real;
+	t_point	formula_res;
+
+	count = 0;
+	z.real = 0;
+	z.im = 0;
+	c.real = scale_map(x, -2, 2, 0, 999) * info->zoom;
+	c.im = scale_map(y, -2, 2, 0, 999) * info->zoom;
+	while (count++ < 100)
+	{
+		if (count == 0 && sqrt(pow(c.real, 2) + pow(c.im, 2)) > 2)
+			break ;
+		tmp_real = (z.real * z.real) - (z.im * z.im); // x^2 - y^2
+		z.im = 2 * z.real * z.im; // 2xyi
+		z.real = tmp_real;
+		formula_res.real = z.real + c.real;
+		formula_res.im = z.im + c.im;
+		z = formula_res;
+		if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2)
+			break ;
+	}
+	return (count);
+}*/
 
 double	scale_map(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
 {

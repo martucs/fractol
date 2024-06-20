@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:42 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/19 12:49:11 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:44:19 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "mlx_linux/mlx.h"
 #include "libft/libft.h"
 
-void	create_fractal(t_mlx *info, int x, int y)
+void	draw_mandelbrot(t_mlx *info, int x, int y)
 {
 	t_point	z;
 	t_point	c;

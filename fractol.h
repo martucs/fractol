@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:49:29 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/18 19:45:00 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:12:15 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,13 @@ typedef struct s_point
 	double	im;
 }	t_point;
 
-int		mandelbrot_check(char **argv);
 int		julia_check(char **argv);
 int		start_mandelbrot(void);
 double	scale_map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 //void	show_scaled_map(void);
-//int		check_range(t_point num);
 int		keyboard_input(int keysym, t_mlx *mlax_info_dir);
-void	set_window(t_mlx *info);
-void	set_image(t_mlx *info);
-void	create_fractal(t_mlx *info, int x, int y);
+void	set_display(t_mlx *info);
+void	draw_mandelbrot(t_mlx *info, int x, int y);
 void	put_pixel_to_img(t_img	*img, int x, int y, int color);
 
 #endif
