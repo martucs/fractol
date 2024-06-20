@@ -6,20 +6,20 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:49:29 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/20 19:12:15 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/20 22:18:43 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <math.h>
-#include <stdio.h>
+# include <math.h>
+# include <stdio.h>
 
-#define XK_Escape 65307
-#define cyan_color 0x0000ffff
-#define yellow_color 0x00ffff00
-#define deep_blue_color 0x0000008b
+# define XK_Escape 65307
+# define cyan_color 0x0000ffff
+# define yellow_color 0x00ffff00
+# define deep_blue_color 0x0000008b
 
 typedef struct	s_img
 {
