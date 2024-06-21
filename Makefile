@@ -6,7 +6,7 @@ OBJS = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 LIBFT_A = libft/libft.a
 
@@ -37,7 +37,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	make fclean -C libft
+	rm -rf $(LIBFT_A)
 
 re: fclean all
 

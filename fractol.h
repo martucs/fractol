@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:49:29 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/20 22:18:43 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:39:28 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define cyan_color 0x0000ffff
 # define yellow_color 0x00ffff00
 # define deep_blue_color 0x0000008b
+# define pale_pink 0x00FFCCCC
+# define pink 0x00FF9999
 
 typedef struct	s_img
 {
@@ -53,5 +55,6 @@ int		keyboard_input(int keysym, t_mlx *mlax_info_dir);
 void	set_display(t_mlx *info);
 void	draw_mandelbrot(t_mlx *info, int x, int y);
 void	put_pixel_to_img(t_img	*img, int x, int y, int color);
+int		close_window(t_mlx *info);
 
 #endif

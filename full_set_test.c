@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:42:47 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/20 21:49:16 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:33:49 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,18 @@ int	mouse_input(int keysym, int x_m, int y_m, t_mlx *mlx_info_dir)
 			// 3. PINTAR EL PIXEL EN LA IMAGEN CON my_put_pixel 
 			if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2 || count == 0)
 			{
-				put_pixel_to_img(&mlx_info_dir->img, x, y, yellow_color);
+			//	put_pixel_to_img(&mlx_info_dir->img, x, y, yellow_color);
 				//put_pixel_to_img(&mlx_info_dir->img, x - (x_m - 500) /10, y - (y_m - 500) /10, yellow_color);
+				if (count > 40 && count < 100)
+					put_pixel_to_img(&mlx_info_dir->img, x, y, pink);
+				else if (count > 20 && count < 40)
+					put_pixel_to_img(&mlx_info_dir->img, x, y, cyan_color);
+				else if (count < 20)
+					put_pixel_to_img(&mlx_info_dir->img, x, y, deep_blue_color);
 			}
 			else
 			{
-				put_pixel_to_img(&mlx_info_dir->img, x, y, cyan_color);
+				put_pixel_to_img(&mlx_info_dir->img, x, y, pale_pink);
 			//	put_pixel_to_img(&mlx_info_dir->img, x - (x_m - 500) /10, y - (y_m - 500) /10, cyan_color);
 			}
 	//		if (x == 5)
@@ -119,6 +125,7 @@ int	main(int argc, char **argv)
 		draw_mandelbrot(&info, 0, 0);
 		mlx_key_hook(info.window, keyboard_input, &info);
 		mlx_mouse_hook(info.window, mouse_input, &info);
+		mlx_hook(info.window, 17, 1L, close_window, &info);
 		mlx_loop(info.ptr);
 	}
 	else if (argc == 4 && julia_check(argv) == 0)

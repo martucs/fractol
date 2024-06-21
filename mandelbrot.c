@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:42 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/20 13:44:19 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/21 18:01:58 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,19 @@ void	draw_mandelbrot(t_mlx *info, int x, int y)
 			//	printf("%dth iteration-> real: %f, im: %f\n", count, formula_res.real, formula_res.im);
 			if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2 || count == 0)
 			{
-				put_pixel_to_img(&info->img, x, y, yellow_color);
-			//	printf("    punto fuera de rango en: (%d, %d)\n", x, y);
+			//	if (count > 80 && count < 100)
+			//		put_pixel_to_img(&info->img, x, y, deep_blue_color);
+				if (count > 30 && count < 100)
+					put_pixel_to_img(&info->img, x, y, pink);
+				else if (count > 20 && count < 30)
+					put_pixel_to_img(&info->img, x, y, cyan_color);
+				else if (count < 20)
+					put_pixel_to_img(&info->img, x, y, deep_blue_color);
+				// cuanto mas pequeno count, mas rapido ha salido de la formula, por tanto, mas lejos del set
 			}
 			else
 			{
-				put_pixel_to_img(&info->img, x, y, cyan_color);
+				put_pixel_to_img(&info->img, x, y, pale_pink);
 			} 
 			x++;
 		}
