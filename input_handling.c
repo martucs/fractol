@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 20:05:53 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/21 20:39:15 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:15:48 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	keyboard_input(int keysym, t_mlx *mlx_info_dir)
 		// liberar memoria
 		// salir del programa
 	}
+//	if (keysym == 65362) //arrow_up
+//	{
+//
+//	}
 	return (0);
 }
 // HANDLER FUNCTION (keyboard_input)

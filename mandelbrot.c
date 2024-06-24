@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:42 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/21 18:01:58 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/24 21:39:38 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ void	draw_mandelbrot(t_mlx *info, int x, int y)
 			{
 			//	if (count > 80 && count < 100)
 			//		put_pixel_to_img(&info->img, x, y, deep_blue_color);
-				if (count > 30 && count < 100)
+				if (count > 20 && count < 100)
 					put_pixel_to_img(&info->img, x, y, pink);
-				else if (count > 20 && count < 30)
-					put_pixel_to_img(&info->img, x, y, cyan_color);
+			//	else if (count > 20 && count < 30)
+			//		put_pixel_to_img(&info->img, x, y, chill_blue);
 				else if (count < 20)
-					put_pixel_to_img(&info->img, x, y, deep_blue_color);
+					put_pixel_to_img(&info->img, x, y, warm_blue);
 				// cuanto mas pequeno count, mas rapido ha salido de la formula, por tanto, mas lejos del set
 			}
 			else

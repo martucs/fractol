@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:49:29 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/21 20:39:28 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/24 21:41:36 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define deep_blue_color 0x0000008b
 # define pale_pink 0x00FFCCCC
 # define pink 0x00FF9999
+# define white 0x00FFFFFF
+# define almost_white 0x00F0DCDC
+# define chill_blue 0x82D2FF
+# define warm_blue 0x280096
 
 typedef struct	s_img
 {

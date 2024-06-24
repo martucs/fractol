@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:42:47 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/21 20:33:49 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:39:48 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	mouse_input(int keysym, int x_m, int y_m, t_mlx *mlx_info_dir)
 				formula_res.real = z.real + c.real;
 				formula_res.im = z.im + c.im;
 				z = formula_res;
-				if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2)
+				if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2) // cambiar a sin utilizar las funciones de la librera math.h
 					break ;
 				count++;
 			}
@@ -91,12 +91,12 @@ int	mouse_input(int keysym, int x_m, int y_m, t_mlx *mlx_info_dir)
 			{
 			//	put_pixel_to_img(&mlx_info_dir->img, x, y, yellow_color);
 				//put_pixel_to_img(&mlx_info_dir->img, x - (x_m - 500) /10, y - (y_m - 500) /10, yellow_color);
-				if (count > 40 && count < 100)
+				if (count > 20 && count < 100)
 					put_pixel_to_img(&mlx_info_dir->img, x, y, pink);
-				else if (count > 20 && count < 40)
-					put_pixel_to_img(&mlx_info_dir->img, x, y, cyan_color);
+			//	else if (count > 20 && count < 40)
+			//		put_pixel_to_img(&mlx_info_dir->img, x, y, cyan_color);
 				else if (count < 20)
-					put_pixel_to_img(&mlx_info_dir->img, x, y, deep_blue_color);
+					put_pixel_to_img(&mlx_info_dir->img, x, y, warm_blue);
 			}
 			else
 			{
