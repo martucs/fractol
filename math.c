@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:51:46 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/20 21:00:13 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:53:58 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@
 	return (count);
 }*/
 
-double	scale_map(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+double	scale_map(double unscaled_num, double new_min, double new_max, double old_max)
 {
+	int	old_min;
+
+	old_min = 0;
 	return ((new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min);
 }
 

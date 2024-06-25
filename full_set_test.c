@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:42:47 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/24 22:39:48 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:56:34 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	mouse_input(int keysym, int x_m, int y_m, t_mlx *mlx_info_dir)
 			count = 0;
 			z.real = 0;
 			z.im = 0;
-			c.real = scale_map(x, -2, 2, 0, 999) * mlx_info_dir->zoom;
-			c.im = scale_map(y, -2, 2, 0, 999) * mlx_info_dir->zoom;
+			c.real = scale_map(x, -2, 2, 999) * mlx_info_dir->zoom;
+			c.im = scale_map(y, -2, 2, 999) * mlx_info_dir->zoom;
 		//	if (x == 0 && z.real == 0)
 		//		printf("plano de x-> c real: %f\nplano de y-> c im: %f\n\n", c.real, c.im);
 

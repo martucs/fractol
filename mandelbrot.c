@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:42 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/24 21:39:38 by martalop         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:54:17 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	draw_mandelbrot(t_mlx *info, int x, int y)
 			count = 0;
 			z.real = 0;
 			z.im = 0;
-			c.real = scale_map(x, -2, 2, 0, 999) * info->zoom;
-			c.im = scale_map(y, -2, 2, 0, 999) * info->zoom;
+			c.real = scale_map(x, -2, 2, 999) * info->zoom;
+			c.im = scale_map(y, -2, 2, 999) * info->zoom;
 			// FORMULA f(z) = z^2 + c
 			while (count < 100)
 			{
@@ -52,15 +52,10 @@ void	draw_mandelbrot(t_mlx *info, int x, int y)
 
 			// 2. ELEGIR COLOR SEGUN ESTE RESULTADO
 			// 3. PINTAR EL PIXEL EN LA IMAGEN CON my_put_pixel 
-			//	printf("%dth iteration-> real: %f, im: %f\n", count, formula_res.real, formula_res.im);
 			if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2 || count == 0)
 			{
-			//	if (count > 80 && count < 100)
-			//		put_pixel_to_img(&info->img, x, y, deep_blue_color);
 				if (count > 20 && count < 100)
 					put_pixel_to_img(&info->img, x, y, pink);
-			//	else if (count > 20 && count < 30)
-			//		put_pixel_to_img(&info->img, x, y, chill_blue);
 				else if (count < 20)
 					put_pixel_to_img(&info->img, x, y, warm_blue);
 				// cuanto mas pequeno count, mas rapido ha salido de la formula, por tanto, mas lejos del set
