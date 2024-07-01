@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:51:46 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/25 17:53:58 by martalop         ###   ########.fr       */
+/*   Updated: 2024/07/01 23:32:06 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,69 @@
 #include "libft/libft.h"
 #include "mlx_linux/mlx.h"
 
-/* int	formula_mandelbrot(int x, int y, t_mlx *info)
+void	chose_color(t_mlx *info, t_math *form)
 {
-	int	count;
-	t_point	z;
-	t_point	c;
-	double	tmp_real;
-	t_point	formula_res;
-
-	count = 0;
-	z.real = 0;
-	z.im = 0;
-	c.real = scale_map(x, -2, 2, 0, 999) * info->zoom;
-	c.im = scale_map(y, -2, 2, 0, 999) * info->zoom;
-	while (count++ < 100)
+	if (sqrt(pow(form->z.real, 2) + pow(form->z.im, 2)) > 2 || form->count == 0)
 	{
-		if (count == 0 && sqrt(pow(c.real, 2) + pow(c.im, 2)) > 2)
+		if (form->count > 20 && form->count < 100)
+			put_pixel_to_img(&info->img, info->x, info->y, pink);
+		else if (form->count < 20)
+			put_pixel_to_img(&info->img, info->x, info->y, warm_blue);
+	}
+	else
+		put_pixel_to_img(&info->img, info->x, info->y, pale_pink);
+}
+
+void	formula_mandelbrot(t_mlx *info, t_math *form)
+{
+	double	tmp_real;
+
+	form->count = 0;
+	form->z.real = 0;
+	form->z.im = 0;
+	form->c.real = scale_map(info->x, -2, 2, 999) * info->zoom;
+	form->c.im = scale_map(info->y, -2, 2, 999) * info->zoom;
+	if (form->c.real > 2 || form->c.real < -2 || form->c.im > 2 || form->c.im < -2)
+		return ;
+	while (form->count++ < 40)
+	{
+		if (form->count == 0 && sqrt(pow(form->c.real, 2) + pow(form->c.im, 2)) > 2)
 			break ;
-		tmp_real = (z.real * z.real) - (z.im * z.im); // x^2 - y^2
-		z.im = 2 * z.real * z.im; // 2xyi
-		z.real = tmp_real;
-		formula_res.real = z.real + c.real;
-		formula_res.im = z.im + c.im;
-		z = formula_res;
-		if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2)
+		tmp_real = (form->z.real * form->z.real) - (form->z.im * form->z.im);
+		form->z.im = 2 * form->z.real * form->z.im;
+		form->z.real = tmp_real;
+		form->z.real = form->z.real + form->c.real;
+		form->z.im = form->z.im + form->c.im;
+		if (sqrt(pow(form->z.real, 2) + pow(form->z.im, 2)) > 2)
 			break ;
 	}
-	return (count);
-}*/
+}
+
+void	formula_julia(t_mlx *info, t_math *form)
+{
+	double	tmp_real;
+
+	form->count = 0;
+	form->z.real = scale_map(info->x, -2, 2, 999) * info->zoom;
+	form->z.im = scale_map(info->y, -2, 2, 999) * info->zoom;
+	
+	form->c.real = info->c.real;
+	form->c.im = info->c.im;
+	if (form->c.real > 2 || form->c.real < -2 || form->c.im > 2 || form->c.im < -2)
+		return ;
+	while (form->count++ < 40)
+	{
+		if (form->count == 0 && sqrt(pow(form->c.real, 2) + pow(form->c.im, 2)) > 2)
+			break ;
+		tmp_real = (form->z.real * form->z.real) - (form->z.im * form->z.im);
+		form->z.im = 2 * form->z.real * form->z.im;
+		form->z.real = tmp_real;
+		form->z.real = form->z.real + form->c.real;
+		form->z.im = form->z.im + form->c.im;
+		if (sqrt(pow(form->z.real, 2) + pow(form->z.im, 2)) > 2)
+			break ;
+	}
+}
 
 double	scale_map(double unscaled_num, double new_min, double new_max, double old_max)
 {
@@ -64,10 +99,4 @@ double	scale_map(double unscaled_num, double new_min, double new_max, double old
 		printf("before: %d, after: %f\n", (int)i, res);
 		i++;
 	}
-}*/
-
-/*int	main()
-{
-	show_scaled_map();
-	return (0);
 }*/

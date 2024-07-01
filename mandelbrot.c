@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:42 by martalop          #+#    #+#             */
-/*   Updated: 2024/06/25 17:54:17 by martalop         ###   ########.fr       */
+/*   Updated: 2024/07/01 23:29:18 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,44 @@
 #include "mlx_linux/mlx.h"
 #include "libft/libft.h"
 
-void	draw_mandelbrot(t_mlx *info, int x, int y)
+void	draw_julia(t_mlx *info)
 {
-	t_point	z;
-	t_point	c;
-	int		count;
-	double	tmp_real;
-	t_point	formula_res;
-	
-	while (y < 1000)
+	t_math	form_info;
+
+	set_math_struct(&form_info);
+	while (info->y < 1000)
 	{
-		x = 0;
-		while (x < 1000)
+		info->x = 0;
+		while (info->x < 1000)
 		{
-			count = 0;
-			z.real = 0;
-			z.im = 0;
-			c.real = scale_map(x, -2, 2, 999) * info->zoom;
-			c.im = scale_map(y, -2, 2, 999) * info->zoom;
-			// FORMULA f(z) = z^2 + c
-			while (count < 100)
-			{
-				if (count == 0 && sqrt(pow(c.real, 2) + pow(c.im, 2)) > 2)
-					break ;
-				// es la primera iteracion y el radio del rango se pasa de 2 en el punto que nos dan (c)
-				tmp_real = (z.real * z.real) - (z.im * z.im); // x^2 - y^2
-				z.im = 2 * z.real * z.im; // 2xyi
-				z.real = tmp_real;
-
-				formula_res.real = z.real + c.real;
-				formula_res.im = z.im + c.im;
-				z = formula_res;
-				if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2)
-					break ;
-				count++;
-			}
-
-			// 2. ELEGIR COLOR SEGUN ESTE RESULTADO
-			// 3. PINTAR EL PIXEL EN LA IMAGEN CON my_put_pixel 
-			if (sqrt(pow(z.real, 2) + pow(z.im, 2)) > 2 || count == 0)
-			{
-				if (count > 20 && count < 100)
-					put_pixel_to_img(&info->img, x, y, pink);
-				else if (count < 20)
-					put_pixel_to_img(&info->img, x, y, warm_blue);
-				// cuanto mas pequeno count, mas rapido ha salido de la formula, por tanto, mas lejos del set
-			}
-			else
-			{
-				put_pixel_to_img(&info->img, x, y, pale_pink);
-			} 
-			x++;
+			formula_julia(info, &form_info);
+			chose_color(info, &form_info);
+			info->x++;
 		}
-		y++;
+		info->y++;
 	}
+	info->x = 0;
+	info->y = 0;
+	mlx_put_image_to_window(info->ptr, info->window, info->img.ptr, 0, 0);
+}
 
-	//enviar la imagen a la ventana
+void	draw_mandelbrot(t_mlx *info)
+{
+	t_math	form_info;
+
+	set_math_struct(&form_info);
+	while (info->y < 1000)
+	{
+		info->x = 0;
+		while (info->x < 1000)
+		{
+			formula_mandelbrot(info, &form_info);
+			chose_color(info, &form_info);
+			info->x++;
+		}
+		info->y++;
+	}
+	info->x = 0;
+	info->y = 0;
 	mlx_put_image_to_window(info->ptr, info->window, info->img.ptr, 0, 0);
 }

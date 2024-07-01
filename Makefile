@@ -4,9 +4,9 @@ SRC = full_set_test.c sets.c math.c input_handling.c lib_utils.c mandelbrot.c
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc
+CC = gcc -g
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
 LIBFT_A = libft/libft.a
 
