@@ -1,10 +1,10 @@
 NAME = fractol
 
-SRC = full_set_test.c sets.c math.c input_handling.c lib_utils.c mandelbrot.c
+SRC = fractol.c math.c input_handling.c formulas.c
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc -g
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 

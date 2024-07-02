@@ -6,7 +6,7 @@
 /*   By: martalop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:49:29 by martalop          #+#    #+#             */
-/*   Updated: 2024/07/01 23:35:09 by martalop         ###   ########.fr       */
+/*   Updated: 2024/07/02 20:37:06 by martalop         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,23 @@
 # include <math.h>
 # include <stdio.h>
 
-# define XK_Escape 65307
-# define XK_ZoomIN 4
-# define XK_ZoomOUT 5
-# define cyan_color 0x0000ffff
-# define yellow_color 0x00ffff00
-# define deep_blue_color 0x0000008b
-# define pale_pink 0x00FFCCCC
-# define pink 0x00FF9999
-# define white 0x00FFFFFF
-# define almost_white 0x00F0DCDC
-# define chill_blue 0x82D2FF
-# define warm_blue 0x280096
+# define XK_ESC 65307
+# define XK_ZOOM_IN 4
+# define XK_ZOOM_OUT 5
+# define CYAN 0x0000ffff
+# define YELLOW 0x00ffff00
+# define PALE_PINK 0x00FFCCCC
+# define PINK 0x00FF9999
+# define DARK_PINK 0x00FF7882
+# define WHITE 0x00FFFFFF
+# define ALMOST_WHITE 0x00F0DCDC
+# define CHIL_BLUE 0x82D2FF
+# define WARM_BLUE 0x280096
+# define DEEPER_BLUE 0x001466
+# define PURPLE 0x660099
+# define MIDDLE_PURPLE 0x6633CC
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*ptr;
 	char	*pixels_ptr;
@@ -44,8 +47,7 @@ typedef struct s_point
 	double	im;
 }	t_point;
 
-
-typedef	struct	s_mlx
+typedef struct s_mlx
 {
 	void	*ptr;
 	void	*window;
@@ -53,23 +55,21 @@ typedef	struct	s_mlx
 	int		x; // window length
 	int		y; // window height
 	int		set;
-	t_point c;
+	t_point	c;
 	double	zoom;
 }	t_mlx;
 
-typedef struct	s_math
+typedef struct s_math
 {
-//	int	x;
-//	int	y;
-	int count;
-//	double	zoom;
-	t_point z;
+	int		count;
+	t_point	z;
 	t_point	c;
 }	t_math;
 
 int		julia_check(char **argv);
 int		start_mandelbrot(void);
-double	scale_map(double unscaled_num, double new_min, double new_max, double old_max);
+double	scale_map(double unscaled_num, double new_min,
+			double new_max, double old_max);
 //void	show_scaled_map(void);
 int		mouse_input(int keysym, int x_m, int y_m, t_mlx *info);
 int		keyboard_input(int keysym, t_mlx *mlax_info_dir);
@@ -82,6 +82,7 @@ void	draw_julia(t_mlx *info);
 void	put_pixel_to_img(t_img	*img, int x, int y, int color);
 int		close_window(t_mlx *info);
 void	chose_color(t_mlx *info, t_math *form_info);
-//int		mouse_input(int keysym, int x_m, int y_m, t_mlx *info);
+void	chose_color_julia(t_mlx *info, t_math *form_info);
+double	elev2(double num);
 
 #endif
